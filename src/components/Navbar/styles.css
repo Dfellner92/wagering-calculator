@@ -1,0 +1,21 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 15vh;
+  background-color: lightgray;
+}
+
+.title {
+  font-size: 1.6em;
+  padding: 4vh;
+}
+
+.links {
+  padding: 5vh;
+}
+
+.link {
+  margin-right: 3vw;
+}
