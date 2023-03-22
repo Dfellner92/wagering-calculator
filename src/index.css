@@ -17,4 +17,64 @@ code {
   display: flex;
   justify-content: space-between;
   width: 80%;
+  align-items: center;
+}
+
+.buttons-wrapper {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.buttons-wrapper-with-margin {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.button {
+  display: flex;
+  flex-direction: column;
+}
+
+.blank-space {
+  height: 2vh;
+}
+
+.button-tag {
+  background-color: grey;
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  border-radius: 15%;
+}
+
+.button-tag:hover {
+  background-color: lightgray;
+}
+
+.button-active-first {
+  background-color: #4caf50 !important;
+  box-shadow: none;
+}
+
+.button-active-second {
+  background-color: rgb(223, 56, 223) !important;
+  box-shadow: none;
+}
+
+.button-active-third {
+  background-color: rgb(225, 197, 33) !important;
+  box-shadow: none;
 }

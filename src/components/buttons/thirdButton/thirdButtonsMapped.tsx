@@ -1,18 +1,18 @@
-import { SecondButton } from './secondButton';
 import { BUTTON_NUMBERS } from '../../../util/buttonNumbers';
+import { ThirdButton } from './thirdButton';
 
-interface SecondButtonsMappedProps {
+interface ThirdButtonsMappedProps {
   activeButtons: number[];
   handler: (number: number) => void;
 }
 
-export const SecondButtons = ({
+export const ThirdButtonsMapped = ({
   activeButtons,
   handler,
-}: SecondButtonsMappedProps) => {
+}: ThirdButtonsMappedProps) => {
   return (
     <div className="container">
-      <h3 className="header">Second Place</h3>
+      <h3 className="header">Third Place</h3>
       <div
         className={
           activeButtons.length
@@ -23,11 +23,11 @@ export const SecondButtons = ({
         <div className="firstButtons">
           {BUTTON_NUMBERS.map((number) => {
             return (
-              <SecondButton
+              <ThirdButton
                 key={number}
-                secondButtons={activeButtons}
+                thirdButtons={activeButtons}
                 number={number}
-                row="second"
+                row="third"
                 handler={handler}
               />
             );

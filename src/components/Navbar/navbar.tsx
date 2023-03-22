@@ -8,7 +8,7 @@ export const Navbar = () => {
         <a className="link" href="/wagering-calculator/Exacta">
           Exacta
         </a>
-        <a className="link" href="/trifecta">
+        <a className="link" href="/wagering-calculator/Trifecta">
           Trifecta
         </a>
         <a className="link" href="/superfecta">

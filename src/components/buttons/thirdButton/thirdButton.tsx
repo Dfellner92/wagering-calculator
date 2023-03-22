@@ -1,21 +1,21 @@
-interface SecondButtonProps {
+interface ThirdButtonProps {
   number: number;
   row: string;
-  secondButtons: number[];
+  thirdButtons: number[];
   handler: (number: number) => void;
 }
 
-export const SecondButton = ({
+export const ThirdButton = ({
   number,
   row,
-  secondButtons,
+  thirdButtons,
   handler,
-}: SecondButtonProps) => {
+}: ThirdButtonProps) => {
   return (
     <div className="button">
       <button
         className={`button-tag ${
-          secondButtons.includes(number) && 'button-active-second'
+          thirdButtons.includes(number) && 'button-active-third'
         }`}
         onClick={() => handler(number)}
       >

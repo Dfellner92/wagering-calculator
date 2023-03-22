@@ -13,19 +13,14 @@ export const FirstButton = ({
 }: FirstButtonProps) => {
   return (
     <div className="button">
-      <button className="button-tag" onClick={() => handler(number)}>
+      <button
+        className={`button-tag ${
+          firstButtons.includes(number) && 'button-active-first'
+        }`}
+        onClick={() => handler(number)}
+      >
         {number}
       </button>
-      {firstButtons.includes(number) ? (
-        <img
-          id={`check-${row}-${number}`}
-          className="button-tag__check"
-          src="https://img.icons8.com/material-outlined/24/000000/checkmark--v1.png"
-          alt="check first one"
-        />
-      ) : (
-        <div></div>
-      )}
     </div>
   );
 };
