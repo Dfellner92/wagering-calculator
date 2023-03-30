@@ -69,15 +69,21 @@ code {
   box-shadow: none;
 }
 
-.button-active-first-alt {
+.button-active-first-key {
   background-color: #4caf50 !important;
   box-shadow: none;
-  filter: drop-shadow(16px 16px 20px red) invert(75%);
+  filter: grayscale(50%);
 }
 
 .button-active-second {
   background-color: rgb(223, 56, 223) !important;
   box-shadow: none;
+}
+
+.button-active-second-key {
+  background-color: rgb(223, 56, 223) !important;
+  box-shadow: none;
+  filter: grayscale(50%);
 }
 
 .button-active-third {

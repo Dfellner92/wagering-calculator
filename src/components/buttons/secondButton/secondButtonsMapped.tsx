@@ -4,11 +4,13 @@ import { BUTTON_NUMBERS } from '../../../util/buttonNumbers';
 interface SecondButtonsMappedProps {
   activeButtons: number[];
   handler: (number: number) => void;
+  isKeyBet?: boolean;
 }
 
 export const SecondButtons = ({
   activeButtons,
   handler,
+  isKeyBet,
 }: SecondButtonsMappedProps) => {
   return (
     <div className="container">
@@ -29,6 +31,7 @@ export const SecondButtons = ({
                 number={number}
                 row="second"
                 handler={handler}
+                isKeyBet
               />
             );
           })}

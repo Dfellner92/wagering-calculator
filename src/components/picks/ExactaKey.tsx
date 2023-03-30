@@ -60,7 +60,11 @@ export function ExactaKey() {
         activeButtons={firstPlaceState}
         handler={handleFirst}
       />
-      <SecondButtons activeButtons={secondPlaceState} handler={handleSecond} />
+      <SecondButtons
+        isKeyBet
+        activeButtons={secondPlaceState}
+        handler={handleSecond}
+      />
       <div className="container">
         <h3 className="header">Cost of Wager</h3>
         <div>

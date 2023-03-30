@@ -19,7 +19,7 @@ export const FirstButton = ({
         className={`button-tag ${
           firstButtons.includes(number) && 'button-active-first'
         } ${
-          firstButtons.includes(number) && isKeyBet && 'button-active-first-alt'
+          firstButtons.includes(number) && isKeyBet && 'button-active-first-key'
         }`}
         onClick={() => handler(number)}
       >
