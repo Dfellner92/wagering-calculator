@@ -1,20 +1,18 @@
-import { FirstButton } from './firstButton';
 import { BUTTON_NUMBERS } from '../../../util/buttonNumbers';
+import { FourthButton } from './fourthButton';
 
-interface FirstButtonsMappedProps {
+interface FourthButtonsMappedProps {
   activeButtons: number[];
   handler: (number: number) => void;
-  isKeyBet?: boolean;
 }
 
-export const FirstButtons = ({
+export const FourthButtonsMapped = ({
   activeButtons,
   handler,
-  isKeyBet,
-}: FirstButtonsMappedProps) => {
+}: FourthButtonsMappedProps) => {
   return (
     <div className="container">
-      <h3 className="header">First Place</h3>
+      <h3 className="header">Fourth Place</h3>
       <div
         className={
           activeButtons.length
@@ -25,13 +23,12 @@ export const FirstButtons = ({
         <div className="firstButtons">
           {BUTTON_NUMBERS.map((number) => {
             return (
-              <FirstButton
+              <FourthButton
                 key={number}
-                firstButtons={activeButtons}
+                fourthButtons={activeButtons}
                 number={number}
-                row="first"
+                row="fourth"
                 handler={handler}
-                isKeyBet={isKeyBet}
               />
             );
           })}

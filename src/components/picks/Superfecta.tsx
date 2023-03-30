@@ -3,18 +3,21 @@ import React, { useState } from 'react';
 import { FirstButtons } from '../buttons/firstButton/firstButtonsMapped';
 import { SecondButtons } from '../buttons/secondButton/secondButtonsMapped';
 import { ThirdButtonsMapped } from '../buttons/thirdButton/thirdButtonsMapped';
+import { FourthButtonsMapped } from '../buttons/fourthButton/fourthButtonsMapped';
 
-interface FindTotalTrifectaProps {
+interface FindTotalSuperfectaProps {
   firstPlaceState: number[];
   secondPlaceState: number[];
   thirdPlaceState: number[];
+  fourthPlaceState: number[];
 }
 
-export function Trifecta() {
+export const Superfecta = () => {
   const [finalTotal, setFinalTotal] = useState<number>(0);
   const [firstPlaceState, setFirstPlaceState] = useState<Array<number>>([]);
   const [secondPlaceState, setSecondPlaceState] = useState<Array<number>>([]);
   const [thirdPlaceState, setThirdPlaceState] = useState<Array<number>>([]);
+  const [fourthPlaceState, setFourthPlaceState] = useState<Array<number>>([]);
 
   const handleFirst = (num: number) => {
     if (firstPlaceState.includes(num)) {
@@ -40,18 +43,35 @@ export function Trifecta() {
     }
   };
 
+  const handleFourth = (num: number) => {
+    if (fourthPlaceState.includes(num)) {
+      setFourthPlaceState(fourthPlaceState.filter((number) => number !== num));
+    } else {
+      setFourthPlaceState([...fourthPlaceState, num]);
+    }
+  };
   const findTotal = ({
     firstPlaceState,
     secondPlaceState,
     thirdPlaceState,
-  }: FindTotalTrifectaProps) => {
+    fourthPlaceState,
+  }: FindTotalSuperfectaProps) => {
     let viablePairings = [];
-  
+
     for (const first of firstPlaceState) {
       for (const second of secondPlaceState) {
         for (const third of thirdPlaceState) {
-          if (second !== first && second !== third && first !== third) {
-            viablePairings.push(third);
+          for (const fourth of fourthPlaceState) {
+            if (
+              second !== first &&
+              second !== third &&
+              first !== third &&
+              first !== fourth &&
+              second !== fourth &&
+              third !== fourth
+            ) {
+              viablePairings.push(fourth);
+            }
           }
         }
       }
@@ -64,6 +84,7 @@ export function Trifecta() {
     setFirstPlaceState([]);
     setSecondPlaceState([]);
     setThirdPlaceState([]);
+    setFourthPlaceState([]);
     setFinalTotal(0);
     document
       .querySelectorAll('.button-tag__check')
@@ -72,19 +93,28 @@ export function Trifecta() {
 
   return (
     <div>
-      <h2 className="header">Trifecta</h2>
+      <h2 className="header">Superfecta</h2>
       <FirstButtons activeButtons={firstPlaceState} handler={handleFirst} />
       <SecondButtons activeButtons={secondPlaceState} handler={handleSecond} />
       <ThirdButtonsMapped
         activeButtons={thirdPlaceState}
         handler={handleThird}
       />
+      <FourthButtonsMapped
+        activeButtons={fourthPlaceState}
+        handler={handleFourth}
+      />
       <div className="container">
         <h3 className="header">Cost of Wager</h3>
         <div>
           <button
             onClick={() =>
-              findTotal({ firstPlaceState, secondPlaceState, thirdPlaceState })
+              findTotal({
+                firstPlaceState,
+                secondPlaceState,
+                thirdPlaceState,
+                fourthPlaceState,
+              })
             }
           >
             Calculate
@@ -97,4 +127,6 @@ export function Trifecta() {
       </div>
     </div>
   );
-}
+};
+
+export default Superfecta;

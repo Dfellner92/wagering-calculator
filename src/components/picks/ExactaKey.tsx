@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { FirstButtons } from '../buttons/firstButton/firstButtonsMapped';
 import { SecondButtons } from '../buttons/secondButton/secondButtonsMapped';
-import { ThirdButtonsMapped } from '../buttons/thirdButton/thirdButtonsMapped';
 
-interface FindTotalTrifectaProps {
+interface FindTotalProps {
   firstPlaceState: number[];
   secondPlaceState: number[];
-  thirdPlaceState: number[];
 }
 
-export function Trifecta() {
+export function ExactaKey() {
   const [finalTotal, setFinalTotal] = useState<number>(0);
   const [firstPlaceState, setFirstPlaceState] = useState<Array<number>>([]);
   const [secondPlaceState, setSecondPlaceState] = useState<Array<number>>([]);
-  const [thirdPlaceState, setThirdPlaceState] = useState<Array<number>>([]);
 
   const handleFirst = (num: number) => {
     if (firstPlaceState.includes(num)) {
       setFirstPlaceState(firstPlaceState.filter((number) => number !== num));
     } else {
-      setFirstPlaceState([...firstPlaceState, num]);
+      setFirstPlaceState([...firstPlaceState, num, num]);
     }
   };
 
@@ -32,27 +29,13 @@ export function Trifecta() {
     }
   };
 
-  const handleThird = (num: number) => {
-    if (thirdPlaceState.includes(num)) {
-      setThirdPlaceState(thirdPlaceState.filter((number) => number !== num));
-    } else {
-      setThirdPlaceState([...thirdPlaceState, num]);
-    }
-  };
-
-  const findTotal = ({
-    firstPlaceState,
-    secondPlaceState,
-    thirdPlaceState,
-  }: FindTotalTrifectaProps) => {
+  const findTotal = ({ firstPlaceState, secondPlaceState }: FindTotalProps) => {
     let viablePairings = [];
-  
+
     for (const first of firstPlaceState) {
       for (const second of secondPlaceState) {
-        for (const third of thirdPlaceState) {
-          if (second !== first && second !== third && first !== third) {
-            viablePairings.push(third);
-          }
+        if (second !== first) {
+          viablePairings.push(second);
         }
       }
     }
@@ -63,7 +46,6 @@ export function Trifecta() {
   const resetTotal = () => {
     setFirstPlaceState([]);
     setSecondPlaceState([]);
-    setThirdPlaceState([]);
     setFinalTotal(0);
     document
       .querySelectorAll('.button-tag__check')
@@ -71,21 +53,19 @@ export function Trifecta() {
   };
 
   return (
-    <div>
-      <h2 className="header">Trifecta</h2>
-      <FirstButtons activeButtons={firstPlaceState} handler={handleFirst} />
-      <SecondButtons activeButtons={secondPlaceState} handler={handleSecond} />
-      <ThirdButtonsMapped
-        activeButtons={thirdPlaceState}
-        handler={handleThird}
+    <>
+      <h2 className="header">Exacta Key</h2>
+      <FirstButtons
+        isKeyBet
+        activeButtons={firstPlaceState}
+        handler={handleFirst}
       />
+      <SecondButtons activeButtons={secondPlaceState} handler={handleSecond} />
       <div className="container">
         <h3 className="header">Cost of Wager</h3>
         <div>
           <button
-            onClick={() =>
-              findTotal({ firstPlaceState, secondPlaceState, thirdPlaceState })
-            }
+            onClick={() => findTotal({ firstPlaceState, secondPlaceState })}
           >
             Calculate
           </button>{' '}
@@ -95,6 +75,6 @@ export function Trifecta() {
         <div>{`$${finalTotal}.00`}</div>
         <br />
       </div>
-    </div>
+    </>
   );
 }

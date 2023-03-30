@@ -69,6 +69,12 @@ code {
   box-shadow: none;
 }
 
+.button-active-first-alt {
+  background-color: #4caf50 !important;
+  box-shadow: none;
+  filter: drop-shadow(16px 16px 20px red) invert(75%);
+}
+
 .button-active-second {
   background-color: rgb(223, 56, 223) !important;
   box-shadow: none;
@@ -76,5 +82,10 @@ code {
 
 .button-active-third {
   background-color: rgb(225, 197, 33) !important;
+  box-shadow: none;
+}
+
+.button-active-fourth {
+  background-color: rgb(8, 62, 188) !important;
   box-shadow: none;
 }
