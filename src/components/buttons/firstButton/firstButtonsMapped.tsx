@@ -1,16 +1,20 @@
 import { FirstButton } from './firstButton';
 import { BUTTON_NUMBERS } from '../../../util/buttonNumbers';
+import { AllButton } from '../allButton/allButton';
+import { Dispatch, SetStateAction } from 'react';
 
 interface FirstButtonsMappedProps {
   activeButtons: number[];
   handler: (number: number) => void;
   isKeyBet?: boolean;
+  selectAll?: Dispatch<SetStateAction<number[]>>;
 }
 
 export const FirstButtons = ({
   activeButtons,
   handler,
   isKeyBet,
+  selectAll,
 }: FirstButtonsMappedProps) => {
   return (
     <div className="container">
@@ -22,6 +26,9 @@ export const FirstButtons = ({
             : 'buttons-wrapper-with-margin'
         }
       >
+        <AllButton
+          selectAll={selectAll as Dispatch<SetStateAction<number[]>>}
+        />
         <div className="firstButtons">
           {BUTTON_NUMBERS.map((number) => {
             return (

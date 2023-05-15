@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { FirstButtons } from '../buttons/firstButton/firstButtonsMapped';
 import { SecondButtons } from '../buttons/secondButton/secondButtonsMapped';
@@ -59,11 +59,13 @@ export function ExactaKey() {
         isKeyBet
         activeButtons={firstPlaceState}
         handler={handleFirst}
+        selectAll={setFirstPlaceState}
       />
       <SecondButtons
         isKeyBet
         activeButtons={secondPlaceState}
         handler={handleSecond}
+        selectAll={setSecondPlaceState}
       />
       <div className="container">
         <h3 className="header">Cost of Wager</h3>
